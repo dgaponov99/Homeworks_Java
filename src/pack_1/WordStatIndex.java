@@ -17,6 +17,7 @@ public class WordStatIndex {
             String word;
             while (text.hasNext()) {
                 word = text.next().toLowerCase();
+                word = Word.validationWord(word);
                 if (wordsList.containsKey(word)) {
                     Word tempWorld = wordsList.get(word);
                     tempWorld.numbers.add(k);
@@ -37,7 +38,7 @@ public class WordStatIndex {
             for (String key : wordsList.keySet()) {
                 Word tempWorld = wordsList.get(key);
                 StringBuilder numbers = new StringBuilder();
-                for (Integer number: tempWorld.numbers) {
+                for (Integer number : tempWorld.numbers) {
                     numbers.append(" ").append(number);
                 }
                 writer.println(key + " " + tempWorld.counter + numbers);
@@ -58,5 +59,26 @@ class Word {
     Word(Integer fistNumber) {
         this.numbers.add(fistNumber);
     }
+
+    public static String validationWord(String word) {
+        char[] symbols = word.toCharArray();
+        int len = word.length();
+        if (Character.isDigit(symbols[0])) {
+            return null;
+        }
+        if (!Character.isLetter(symbols[len - 1])) {
+            len -= 1;
+        }
+        for (int i = 0; i < len; i++) {
+            if (!(Character.isLetter(symbols[i]) || symbols[i] == '-' || symbols[i] == '\'')) {
+                return null;
+            }
+        }
+        StringBuilder wordBuilder = new StringBuilder();
+        for (int i = 0; i < len; i++) {
+            wordBuilder.append(symbols[i]);
+        }
+        return wordBuilder.toString();
+    } // end validationWord
 
 } // end Word
