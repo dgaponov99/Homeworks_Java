@@ -12,7 +12,7 @@ public class WordStatIndex {
 
         if (args.length == 0){
             System.out.println("Передайте имена входного и выходного файла аргументами при запуске программы");
-            System.exit(1);
+            return;
         }
 
         LinkedHashMap<String, Word> wordsList = new LinkedHashMap<>();
@@ -36,7 +36,7 @@ public class WordStatIndex {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("Передайте имя входного файла первым аргументом при запуске программы");
-            System.exit(1);
+            return;
         } // end input try
 
         try (PrintWriter writer = new PrintWriter(new File(args[1]))) {
@@ -51,9 +51,7 @@ public class WordStatIndex {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("Передайте имя выходного файла вторым аргументом при запуске программы");
-            System.exit(1);
         } // end output try
-
     } // end main
 } // end WordStatIndex
 
