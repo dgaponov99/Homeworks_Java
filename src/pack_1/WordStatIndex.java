@@ -10,6 +10,11 @@ import java.util.Scanner;
 public class WordStatIndex {
     public static void main(String[] args) {
 
+        if (args.length == 0){
+            System.out.println("Передайте имена входного и выходного файла аргументами при запуске программы");
+            System.exit(1);
+        }
+
         LinkedHashMap<String, Word> wordsList = new LinkedHashMap<>();
 
         try (Scanner text = new Scanner(new File(args[0]), "UTF-8")) {
@@ -27,7 +32,7 @@ public class WordStatIndex {
                     wordsList.put(word, new Word(k));
                 }
                 k++;
-            }
+            } // end while
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("Передайте имя входного файла первым аргументом при запуске программы");
@@ -40,14 +45,14 @@ public class WordStatIndex {
                 StringBuilder numbers = new StringBuilder();
                 for (Integer number : tempWorld.numbers) {
                     numbers.append(" ").append(number);
-                }
+                } // end for
                 writer.println(key + " " + tempWorld.counter + numbers);
-            }
+            } // end for
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("Передайте имя выходного файла вторым аргументом при запуске программы");
             System.exit(1);
-        }
+        } // end output try
 
     } // end main
 } // end WordStatIndex
@@ -58,7 +63,7 @@ class Word {
 
     Word(Integer fistNumber) {
         this.numbers.add(fistNumber);
-    }
+    } // end constructor
 
     public static String validationWord(String word) {
         char[] symbols = word.toCharArray();
@@ -73,11 +78,11 @@ class Word {
             if (!(Character.isLetter(symbols[i]) || symbols[i] == '-' || symbols[i] == '\'')) {
                 return null;
             }
-        }
+        } // end for
         StringBuilder wordBuilder = new StringBuilder();
         for (int i = 0; i < len; i++) {
             wordBuilder.append(symbols[i]);
-        }
+        } // end for
         return wordBuilder.toString();
     } // end validationWord
 
