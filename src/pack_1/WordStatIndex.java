@@ -1,5 +1,7 @@
 package pack_1;
 
+// надеюсь это последний коммит
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -33,6 +35,8 @@ public class WordStatIndex {
                 }
                 k++;
             } // end while
+
+            text.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("Передайте имя входного файла первым аргументом при запуске программы");
@@ -48,6 +52,8 @@ public class WordStatIndex {
                 } // end for
                 writer.println(key + " " + tempWorld.counter + numbers);
             } // end for
+
+            writer.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("Передайте имя выходного файла вторым аргументом при запуске программы");
