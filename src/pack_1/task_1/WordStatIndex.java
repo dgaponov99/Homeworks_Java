@@ -1,6 +1,8 @@
-package pack_1;
+package pack_1.task_1;
 
 // надеюсь это последний коммит
+
+// по хорошему нужно бы было сделать через регулярки, но и так сойдет...
 
 import java.io.File;
 import java.io.FileNotFoundException;
