@@ -1,6 +1,7 @@
 package pack_1.task_1;
 
 // надеюсь это последний коммит
+// ага блин...
 
 // по хорошему нужно бы было сделать через регулярки, но и так сойдет...
 
@@ -14,7 +15,7 @@ import java.util.Scanner;
 public class WordStatIndex {
     public static void main(String[] args) {
 
-        if (args.length == 0){
+        if (args.length == 0) {
             System.out.println("Передайте имена входного и выходного файла аргументами при запуске программы");
             return;
         }
@@ -27,6 +28,9 @@ public class WordStatIndex {
             while (text.hasNext()) {
                 word = text.next().toLowerCase();
                 word = Word.validationWord(word);
+                if (word == null) {
+                    continue;
+                }
                 if (wordsList.containsKey(word)) {
                     Word tempWorld = wordsList.get(word);
                     tempWorld.numbers.add(k);
