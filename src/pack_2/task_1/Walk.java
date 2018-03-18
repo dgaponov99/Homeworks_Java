@@ -40,9 +40,6 @@ public class Walk {
                 System.out.println("Файла " + path + " не существует");
             }
         }
-
-        System.out.println(pathMap.toString());
-
         for (String key: keyForRemove){
             pathMap.remove(key);
         }
